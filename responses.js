@@ -1,5 +1,5 @@
 function getBotResponse(_input) {
-    var response = _input.toLowerCase().replaceAll("  "," ");
+    var response = _input.toLowerCase().replaceAll("  "," ").replaceAll("?","");
     switch (response.toLowerCase()) {
         case "hello":
         case "hi":
@@ -66,6 +66,12 @@ function getBotResponse(_input) {
                 response.replace("search on duckduckgo for ", "").replace(" ", "+");
                 return "searching";
             }
+
+            if (response.includes("browse ")) {
+                window.location.href =  response.replace("browse ", "").replace(" ", "");
+                return "searching";
+            }
+
             return "I don't understand. Try again.";
         }
     }
