@@ -1,5 +1,5 @@
 function getBotResponse(_input) {
-    var response = _input.toLowerCase().replaceAll("  "," ").replaceAll("?","");
+    var response = _input.toLowerCase().replaceAll("  ", " ").replaceAll("?", "");
     switch (response.toLowerCase()) {
         case "hello":
         case "hi":
@@ -30,45 +30,45 @@ function getBotResponse(_input) {
             return "My favorite animal is a dog";
         case "rock": return "paper";
         case "paper": return "scissors";
-        case "scissors": return "rock";  
+        case "scissors": return "rock";
         case "hearted": return "Thank you!";
         case "share": return "Share me with your friends! click here...  https://abappdev.github.io/smallbot/";
 
         case "help": return "You can ask me-"
-        +"what is your name"+"?\n"
-        +"what is your favorite color"+"?\n"
-        +"what is your favorite food"+"?\n"
-        +"what is your favorite movie"+"?\n"
-        +"what is your favorite song"+"?\n"
-        +"what is your favorite sport"+"?\n"
-        +"what is your favorite band"+"?\n"
-        +"what is your favorite book"+"?\n"
-        +"what is your favorite game"+"?\n"
-        +"what is your favorite animal"+"?\n"
-        +"\n Or I can play rock-paper-scissors with you! type 'rock', 'paper', or 'scissors'\n"
-        +"\n Or type 'search on [youtube|google|duckduckgo] for [your query]' to search on youtube, google, or duckduckgo\n"
+            + "what is your name" + "?\n"
+            + "what is your favorite color" + "?\n"
+            + "what is your favorite food" + "?\n"
+            + "what is your favorite movie" + "?\n"
+            + "what is your favorite song" + "?\n"
+            + "what is your favorite sport" + "?\n"
+            + "what is your favorite band" + "?\n"
+            + "what is your favorite book" + "?\n"
+            + "what is your favorite game" + "?\n"
+            + "what is your favorite animal" + "?\n"
+            + "\n Or I can play rock-paper-scissors with you! type 'rock', 'paper', or 'scissors'\n"
+            + "\n Or type 'search on [youtube|google|duckduckgo] for [your query]' to search on youtube, google, or duckduckgo\n"
 
         default: {
-       
+
             if (response.includes("search on youtube for ")) {
-                window.location.href = "https://www.youtube.com/results?search_query=" + 
-                response.replace("search on youtube for ", "").replace(" ", "+");
+                window.location.href = "https://www.youtube.com/results?search_query=" +
+                    response.replace("search on youtube for ", "").replace(" ", "+");
                 return "searching";
             }
             if (response.includes("search on google for ")) {
-                window.location.href = "https://www.google.com/search?q=" + 
-                response.replace("search on google for ", "").replace(" ", "+");
+                window.location.href = "https://www.google.com/search?q=" +
+                    response.replace("search on google for ", "").replace(" ", "+");
                 return "searching";
             }
 
             if (response.includes("search on duckduckgo for ")) {
                 window.location.href = "https://duckduckgo.com/?q=" +
-                response.replace("search on duckduckgo for ", "").replace(" ", "+");
+                    response.replace("search on duckduckgo for ", "").replace(" ", "+");
                 return "searching";
             }
 
-            if (response.includes("browse ")) {
-                window.location.href =  response.replace("browse ", "").replace(" ", "");
+            if (response.includes("browse ") && !response.includes("https://")) {
+                window.location.href = "https://" + response.replace("browse ", "").replace(" ", "");
                 return "searching";
             }
 
