@@ -67,8 +67,8 @@ function getBotResponse(_input) {
                 return "searching";
             }
 
-            if (response.includes("browse ") && !response.includes("https://")) {
-                window.location.href = "https://" + response.replace("browse ", "").replace(" ", "");
+            if (response.includes("browse ")) {
+                window.location.href = "https://" + response.replace("browse ", "").replace(" ", "").replace("https://", "").replace("http://", "");
                 return "searching";
             }
 
